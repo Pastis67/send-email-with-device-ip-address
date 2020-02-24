@@ -38,7 +38,8 @@ def get_device_ip_address():
             ipaddr = s.getsockname()[0]
             gateway = gw[2]
             host = socket.gethostname()
-            result = "OS:\t\tRaspbian\nIP:\t\t" + ipaddr + "\nGateway:\t" + gateway + "\nHost:\t\t" + host
+			extip = os.popen("wget -qO- ifconfig.me/ip").read()
+            result = "OS:\t\tRaspbian\nIP:\t\t" + ipaddr + "\nGateway:\t" + gateway + "\nHost:\t\t" + host + "\nExtIP:\t\t" + ipext
             return result
         
         else:
